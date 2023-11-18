@@ -18,7 +18,7 @@ from gymnasium.spaces import discrete
 from meltingpot import substrate
 from meltingpot.configs.substrates import commons_harvest__open
 
-from . import utils
+import utils
 
 
 class MeltingPotEnvTests(absltest.TestCase):
@@ -27,11 +27,13 @@ class MeltingPotEnvTests(absltest.TestCase):
   def setUp(self):
     super().setUp()
     # Create a new MeltingPotEnv for each test case
-    env_config = substrate.get_config('commons_harvest__open')
+    substrate_name = 'commons_harvest__open'
+    # substrate_name = 'prisoners_dilemma_in_the_matrix__repeated'
+    env_config = substrate.get_config(substrate_name)
     roles = env_config.default_player_roles
     self._num_players = len(roles)
     self._env = utils.env_creator({
-        'substrate': 'commons_harvest__open',
+        'substrate': substrate_name,
         'roles': roles,
     })
 
@@ -42,7 +44,7 @@ class MeltingPotEnvTests(absltest.TestCase):
     self.assertEqual(env_action_space, discrete.Discrete(actions_count))
 
   def test_reset_number_agents(self):
-    """Test that reset() returns observations for all agents."""
+    """Test that reset() returns observations for all agents."""    
     obs, _ = self._env.reset()
     self.assertLen(obs, self._num_players)
 
