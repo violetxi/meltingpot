@@ -47,4 +47,5 @@ class PerSubstrateTestCase(test_utils.SubstrateTestCase):
         self.assertSequenceEqual(env.observation_spec(), observation_spec)
 
 if __name__ == '__main__':
+  breakpoint()
   absltest.main()

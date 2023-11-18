@@ -550,6 +550,9 @@ def get_config():
   ]
   config.global_observation_names = [
       "WORLD.RGB",
+      # @TODO: Add this to other environments to allow text observation
+      # global ascii map
+      "GLOBAL.TEXT"
   ]
 
   # The specs of the environment (from a single-agent perspective).

@@ -544,6 +544,8 @@ def get_config():
   ]
   config.global_observation_names = [
       "WORLD.RGB",
+      # global ascii map
+      "GLOBAL.TEXT"
   ]
 
   # The specs of the environment (from a single-agent perspective).

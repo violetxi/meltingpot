@@ -83,7 +83,7 @@ class Wrapper(observables.ObservableLab2dWrapper):
 
     Args:
       source: dmlab2d observations source to check.
-    """
+    """    
     player_observations = [{} for i in range(self._num_players)]
     for suffix in self._individual_observation_suffixes:
       for i, value in _player_observations(source, suffix, self._num_players):
@@ -131,7 +131,7 @@ class Wrapper(observables.ObservableLab2dWrapper):
 
   def reset(self) -> dm_env.TimeStep:
     """See base class."""
-    timestep = super().reset()
+    timestep = super().reset()    
     return self._get_timestep(timestep)
 
   def step(
