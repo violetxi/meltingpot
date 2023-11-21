@@ -123,6 +123,10 @@ def world_rgb(ascii_map: str,
   return rgb(height, width, name)
 
 
+def global_text():
+  """Returns the spec for a GLOBAL_TEXT observation."""
+  return dm_env.specs.StringArray(shape=(), name='GLOBAL_TEXT')
+
 def inventory(num_resources: int,
               name: Optional[str] = 'INVENTORY') -> dm_env.specs.Array:
   """Returns the spec for an INVENTORY observation.

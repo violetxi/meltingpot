@@ -45,9 +45,8 @@ class ObservablesWrapper(observables.ObservableLab2dWrapper):
 
   def reset(self) -> dm_env.TimeStep:
     """See base class."""
-    timestep = super().reset()    
+    timestep = super().reset()
     self._timestep_subject.on_next(timestep)
-    # breakpoint()
     for event in super().events():
       self._events_subject.on_next(event)
     return timestep

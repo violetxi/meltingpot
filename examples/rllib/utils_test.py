@@ -17,7 +17,6 @@ from absl.testing import absltest
 from gymnasium.spaces import discrete
 from meltingpot import substrate
 from meltingpot.configs.substrates import commons_harvest__open
-
 import utils
 
 
@@ -27,8 +26,9 @@ class MeltingPotEnvTests(absltest.TestCase):
   def setUp(self):
     super().setUp()
     # Create a new MeltingPotEnv for each test case
-    substrate_name = 'commons_harvest__open'
+    # substrate_name = 'commons_harvest__open'
     # substrate_name = 'prisoners_dilemma_in_the_matrix__repeated'
+    substrate_name = 'collaborative_cooking__asymmetric'
     env_config = substrate.get_config(substrate_name)
     roles = env_config.default_player_roles
     self._num_players = len(roles)
@@ -44,21 +44,21 @@ class MeltingPotEnvTests(absltest.TestCase):
     self.assertEqual(env_action_space, discrete.Discrete(actions_count))
 
   def test_reset_number_agents(self):
-    """Test that reset() returns observations for all agents."""    
+    """Test that reset() returns observations for all agents."""
     obs, _ = self._env.reset()
     self.assertLen(obs, self._num_players)
 
   def test_step(self):
     """Test step() returns rewards for all agents."""
-    self._env.reset()
-
+    obs, _ = self._env.reset()
+    breakpoint()
     # Create dummy actions
     actions = {}
     for player_idx in range(0, self._num_players):
-      actions['player_' + str(player_idx)] = 1
+      actions['player_' + str(player_idx)] = 2
 
     # Step
-    _, rewards, _, _, _ = self._env.step(actions)
+    obs, rewards, _, _, _ = self._env.step(actions)
 
     # Check we have one reward per agent
     self.assertLen(rewards, self._num_players)

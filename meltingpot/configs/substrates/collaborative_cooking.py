@@ -914,6 +914,8 @@ def get_config():
   ]
   config.global_observation_names = [
       "WORLD.RGB",
+      # add global ASCII map to observation
+      "GLOBAL.TEXT"
   ]
 
   config.action_spec = specs.action(len(ACTION_SET))

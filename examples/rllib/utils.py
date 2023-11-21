@@ -17,6 +17,7 @@ from typing import Tuple
 
 import dm_env
 import dmlab2d
+import gym_utils as utils
 from gymnasium import spaces
 from meltingpot import substrate
 from meltingpot.utils.policies import policy
@@ -25,8 +26,6 @@ import numpy as np
 from ray.rllib import algorithms
 from ray.rllib.env import multi_agent_env
 from ray.rllib.policy import sample_batch
-
-import gym_utils as utils
 
 PLAYER_STR_FORMAT = 'player_{index}'
 

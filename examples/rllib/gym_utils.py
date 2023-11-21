@@ -30,7 +30,8 @@ def timestep_to_observations(timestep: dm_env.TimeStep) -> Mapping[str, Any]:
     gym_observations[PLAYER_STR_FORMAT.format(index=index)] = {
         key: value
         for key, value in observation.items()
-        if _WORLD_PREFIX not in key
+        # we are keeping the world observation for now
+        #if _WORLD_PREFIX not in key
     }
   return gym_observations
 
@@ -77,17 +78,17 @@ def spec_to_space(spec: tree.Structure[dm_env.specs.Array]) -> spaces.Space:
     elif np.issubdtype(spec.dtype, np.integer):
       info = np.iinfo(spec.dtype)
       return spaces.Box(info.min, info.max, spec.shape, spec.dtype)
-    # add spec check for `GLOBAL.TEXT`    
+    # add spec check for `GLOBAL.TEXT`
     elif np.issubdtype(spec.dtype, np.bytes_):
       return ByteStrSpace()
     elif spec.shape == () and spec.dtype == np.dtype('O'):
       return ByteStrSpace()
-    else:      
+    else:
       breakpoint()
       raise NotImplementedError(f'Unsupported dtype {spec.dtype}')
   elif isinstance(spec, (list, tuple)):
     return spaces.Tuple([spec_to_space(s) for s in spec])
-  elif isinstance(spec, dict):    
+  elif isinstance(spec, dict):
     return spaces.Dict({key: spec_to_space(s) for key, s in spec.items()})
   else:
     raise ValueError('Unexpected spec of type {}: {}'.format(type(spec), spec))

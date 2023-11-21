@@ -63,6 +63,7 @@ def get_config():
       "RGB": specs.rgb(40, 40),
       # Debug only (do not use the following observations in policies).
       "WORLD.RGB": specs.rgb(40, 72),
+      "GLOBAL.TEXT": specs.global_text(),
   })
 
   # The roles assigned to each player.
