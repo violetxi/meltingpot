@@ -78,8 +78,8 @@ WWWWWWWWWWWWWWWWWWWWWWWWW
 """
 
 _resource_names = [
-    "resource_class1",
-    "resource_class2",
+    "resource_class1",    # Cooperate
+    "resource_class2",    # Defect
 ]
 
 # `prefab` determines which prefab game object to use for each `char` in the
