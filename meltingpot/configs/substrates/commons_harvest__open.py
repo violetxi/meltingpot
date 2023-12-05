@@ -262,14 +262,14 @@ FIRE_ZAP   = {"move": 0, "turn":  0, "fireZap": 1}
 # pylint: enable=bad-whitespace
 
 ACTION_SET = (
-    NOOP,
-    FORWARD,
-    BACKWARD,
-    STEP_LEFT,
-    STEP_RIGHT,
-    TURN_LEFT,
-    TURN_RIGHT,
-    FIRE_ZAP,
+    NOOP, # 0
+    FORWARD, # 1
+    BACKWARD, # 2
+    STEP_LEFT, # 3
+    STEP_RIGHT, # 4
+    TURN_LEFT, # 5
+    TURN_RIGHT, # 6
+    FIRE_ZAP, # 7
 )
 
 TARGET_SPRITE_SELF = {
