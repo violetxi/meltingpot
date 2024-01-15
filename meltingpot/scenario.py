@@ -56,7 +56,9 @@ PERMITTED_OBSERVATIONS = frozenset({
     'STAMINA',
     'VOTING',
     # An extra observation that is never necessary but could perhaps help.
-    'COLLECTIVE_REWARD'
+    'COLLECTIVE_REWARD',
+    # Allow global observation for LLM evaluations
+    'WORLD.RGB'
 })
 
 
