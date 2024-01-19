@@ -1,4 +1,5 @@
 absl_py
+gym==0.26.2
 dm_env
 dm_meltingpot
 dm_tree
